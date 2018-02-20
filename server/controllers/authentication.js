@@ -60,17 +60,20 @@ exports.signup = function (req, res, next) {
 }
 
 exports.getUser = function (req, res){
-	if (req.headers && req.headers.authorization) {
-			var authorization = req.headers.authorization;
+	if (req.headers && req.headers.token) {
+			var token = req.headers.token;
 			var	decoded;
 			try {
-				decoded = jwt.decode(authorization, config.secret);
+				decoded = jwt.decode(token, config.secret);
 			} catch (e) {
-				return res.status(401).send({error: "Unauthorized Yo"});
+				return res.status(401).send({error: "Unauthorized"});
 			}
 			var userId = decoded.sub;
 			User.findOne({_id: userId}).then(function(user){
-					return res.status(200).send({username: user.username});
+					return res.status(200).send({
+						username: user.username,
+						id: userId
+					});
 			});
 	}
 }

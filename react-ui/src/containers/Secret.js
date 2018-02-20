@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getAuthenticatedUser } from '../redux/actions'
 
 class Protected extends Component {
 
@@ -23,8 +22,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = {
-	getAuthenticatedUser
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Protected)
+export default connect(mapStateToProps)(Protected)

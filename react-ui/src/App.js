@@ -26,15 +26,12 @@ import diamondPattern from './images/diamondPattern.svg'
 class App extends Component {
 
 	componentWillMount() {
-		const token = localStorage.getItem('token')
+		const token = localStorage.getItem('SagaToken')
 		if (token) {
 			this.props.getAuthenticatedUser()
 		}		
 	}
 
-	handleSigninSubmit = (email, password) => {
-		this.props.attemptSignin(email, password)
-	}
 	handleSignupSubmit = (email, username, password) => {
 		this.props.attemptSignup(email, username, password)
 	}
@@ -43,6 +40,7 @@ class App extends Component {
 		let backgroundStyle = {
 			backgroundImage: `url(${diamondPattern})`
 		}
+
     return (
 				<div className="app" style={backgroundStyle}>
 					<Header username={this.props.username}/>
@@ -50,13 +48,14 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route path="/about" component={About} />
+
 							<PrivateRoute path="/protected" component={Protected} />
 
 							<Route path="/signup" render={()=>
-								<SignupForm error={this.props.error} onSubmit={this.handleSignupSubmit} />} />
+								<SignupForm onSubmit={this.handleSignupSubmit} />} />
 
 							<Route path="/signin" render={()=>
-								<SigninForm error={this.props.error} onSubmit={this.handleSigninSubmit} />} />
+								<SigninForm />} />
 
 							<Route component={NotFound} />
 						</Switch>
@@ -69,8 +68,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
 	return {
 		router: state.router,
-		username: state.auth.get('username'),
-		error: state.auth.get('error')
+		username: state.auth.get('username')
 	}
 }
 

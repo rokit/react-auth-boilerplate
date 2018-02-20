@@ -49,7 +49,7 @@ export const attemptSignin = (email, password) => dispatch => {
 	{ withCredentials: true })
 	.then(
 		response => {
-			localStorage.setItem('authAppToken1', response.data.token)			
+			localStorage.setItem('SagaToken', response.data.token)			
 			dispatch(setAuthenticated(true, response.data.name, response.data.id))
 			dispatch(push('/protected'))
 		},
@@ -72,7 +72,7 @@ export const attemptSignup = (email, username, password) => dispatch => {
 	.then(
 		response => {
 			// console.log('authA signup', response)
-			localStorage.setItem('authAppToken1', response.data.token)
+			localStorage.setItem('SagaToken', response.data.token)
 			dispatch(setAuthenticated(true, response.data.name, response.data.id))
 		},
 		error => {
@@ -83,13 +83,13 @@ export const attemptSignup = (email, username, password) => dispatch => {
 }
 
 export const signout = () => dispatch => {
-	localStorage.removeItem('authAppToken1')
-	dispatch(setAuthenticated(false, "Guest", undefined))
+	localStorage.removeItem('SagaToken')
+	dispatch(setAuthenticated(false, "Guest", null))
 }
 
 export const getAuthenticatedUser = () => dispatch => {
 	axios.get('/get-user', {
-		headers: {authorization: localStorage.getItem('authAppToken1')}
+		headers: {token: localStorage.getItem('SagaToken')}
 	})
 	.then(
 		response => {

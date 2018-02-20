@@ -1,4 +1,9 @@
 import React, {Component} from 'react'
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as actions from '../redux/actions'
+
 import './SigninForm.css'
 
 class SigninForm extends Component {
@@ -16,7 +21,7 @@ class SigninForm extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		this.props.onSubmit(this.state.email, this.state.password)
+		this.props.attemptSignin(this.state.email, this.state.password)
 	}
 
 	render() {
@@ -39,4 +44,14 @@ class SigninForm extends Component {
 	}
 }
 
-export default SigninForm
+const mapStateToProps = (state) => {
+	return {
+		error: state.auth.get('error')
+	}
+}
+
+function mapDispatchToProps(dispatch, ownProps) {
+	return bindActionCreators(actions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SigninForm)

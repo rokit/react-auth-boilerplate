@@ -28,15 +28,13 @@ const localLogin = new LocalStrategy(localOptions, function (email, password, do
       }
       return done(null, user);
     })
-    // compare passwords - is `password` equal to user.password?
   })
-
 });
 
 
 // Setup options for JWT strategy
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  jwtFromRequest: ExtractJwt.fromHeader('token'),
   secretOrKey: config.secret
 };
 

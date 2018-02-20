@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
+import SignInForm from '../SigninForm'
 export const PrivateRoute = ({component: ComposedComponent, ...rest}) => {
 
   class Authentication extends Component {
 
-    // redirect if not authenticated; otherwise, return the component imputted into <PrivateRoute />
-    handleRender(props) {
+		// return signinform if not authenticated; otherwise, return the component imputted into <PrivateRoute />
+    handleRender = (props) => {
       if (!this.props.isAuthenticated) {
-        return <Redirect to={{
-          pathname: '/signin',
-          state: {
-            from: props.location,
-            message: 'Please sign in for access.'
-          }
-        }}/>
+        return <SignInForm />
       } else {
         return <ComposedComponent {...props}/>
       }
@@ -23,7 +18,7 @@ export const PrivateRoute = ({component: ComposedComponent, ...rest}) => {
 
     render() {
       return (
-        <Route {...rest} render={this.handleRender.bind(this)}/>
+        <Route {...rest} render={this.handleRender}/>
       )
     }
   }

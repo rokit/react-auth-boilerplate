@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyparser = require('body-parser');
 const path = require('path');
@@ -5,8 +6,13 @@ const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const router = require('./router');
 const mongoose = require('mongoose');
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
+
 mongoose.Promise = global.Promise;
-mongoose.connection.openUri('mongodb://site:smugpaperbuttonangle@ds123658.mlab.com:23658/saga')
+mongoose.connection.openUri(process.env.MONGODB)
 
 // Multi-process to utilize all CPU cores.
 if (cluster.isMaster) {

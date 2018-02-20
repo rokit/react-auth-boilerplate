@@ -9,8 +9,8 @@ import {
 var initialState = {
 	requesting: false,
 	username: 'Guest',
-	id: undefined,
-	error: undefined,
+	id: null,
+	error: null,
 	isAuthenticated: false
 }
 

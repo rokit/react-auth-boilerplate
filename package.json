@@ -6,6 +6,7 @@
     "node": "6.9.4"
   },
   "scripts": {
+		"dev": "nodemon server",
     "start": "node server",
     "heroku-postbuild": "cd react-ui/ && yarn --production=false && yarn build"
   },
@@ -16,6 +17,7 @@
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
+    "dotenv": "^5.0.0",
     "express": "^4.14.1",
     "express-session": "^1.15.6",
     "jwt-simple": "^0.5.1",
