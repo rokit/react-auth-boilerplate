@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 // const cors = require('cors')
 mongoose.Promise = global.Promise;
 // mongoose.connect('mongodb://localhost:auth/auth');
-mongoose.connection.openUri(process.env.MONGO || 'mongodb://localhost/saga')
+mongoose.connection.openUri('mongodb://site:smugpaperbuttonangle@ds123658.mlab.com:23658/saga')
 
 // app.use(morgan('combined'));
 // app.use(cors());
