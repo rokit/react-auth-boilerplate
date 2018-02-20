@@ -66,7 +66,7 @@ exports.getUser = function (req, res){
 			try {
 				decoded = jwt.decode(authorization, config.secret);
 			} catch (e) {
-				return res.status(401).send({error: "Unauthorized"});
+				return res.status(401).send({error: "Unauthorized Yo"});
 			}
 			var userId = decoded.sub;
 			User.findOne({_id: userId}).then(function(user){
