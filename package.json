@@ -6,7 +6,7 @@
     "node": "6.9.4"
   },
   "scripts": {
-    "start": "nodemon server",
+    "start": "node server",
     "heroku-postbuild": "cd react-ui/ && yarn install --production=false && yarn build"
   },
   "cacheDirectories": [
