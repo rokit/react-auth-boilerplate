@@ -10,7 +10,7 @@ module.exports = function (app) {
 		console.log('ello')
 	})
 	app.get('/get-user', Authentication.getUser);
-  app.get('/', requireAuth, function (req, res) {
+  app.get('/', function (req, res) {
 		console.log('res data', res)
     res.send({message: 'S3CR3T M3SS4G3'});
   });
