@@ -1,0 +1,130 @@
+@keyframes app-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.main-header {
+	position: relative;
+	width: 100%;
+	top: 0;
+}
+
+.app-header {
+	background-color: #4C413C;
+	color: #B4A7A0;
+	align-items: center;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.app-logo {
+	grid-area: logo;
+  /* animation: app-logo-spin infinite 20s linear; */
+	height: 60px;
+	justify-self: start;
+}
+
+.app-name {
+	grid-area: name;
+	font-size: 1.3rem;
+}
+
+.hamburger {
+	grid-area: hamburger;
+	height: 60px;
+	justify-self: end;
+}
+
+.hamburger:hover {
+	background-color: #555;
+}
+
+.signs .app-username {
+	padding: 0px 20px;
+	font-size: 0.9rem;
+}
+
+.signout:hover {
+	cursor: pointer;
+}
+
+.main-header a {
+	display: flex;
+	padding: 20px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+}
+
+.main-header span {
+	font-size: 1rem;
+	margin: auto;
+}
+
+.signs {
+	height: 100%;
+}
+
+.signs a {
+	border-left: 1px solid rgba(0,0,0,0.3);
+	transition: transform 200ms, background-color 100ms;
+}
+
+.signs a:hover, .signs a.active {
+	background-color: #C1D2D6;	
+	transform: translateX(5%);
+}
+
+.main-nav {
+	grid-area: mainnav;
+	background-color: #5F524B;
+}
+
+.main-nav a {
+	border-top: 1px solid rgba(0,0,0,0.1);
+	transition: transform 200ms, background-color 100ms;
+}
+
+.main-nav a:hover, .main-nav a.active {
+	background-color: rgba(255,255,255,0.4);
+	color: #333;
+	transform: translateX(5%);
+}
+
+@supports (grid-area: auto) {
+	.app-header {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-areas: 
+    "logo name hamburger"
+    "signs signs signs"
+    "mainnav mainnav mainnav";
+	}
+	.signs {
+		grid-area: signs;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	@media screen and (min-width: 740px) {
+		.app-logo {
+			height: 80px;
+		}
+		.app-name {
+			grid-area: name;
+			font-size: 1.6rem;
+		}
+		.hamburger {
+			display: none;
+		}
+		.app-header {
+			grid-template-areas: 
+			"logo name signs"
+			"mainnav mainnav mainnav";
+		}
+		.main-nav {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		}
+		.main-nav a {
+			border: none;
+		}
+	}
+}

@@ -1,0 +1,50 @@
+body {
+	font-size: 16px;
+	height: 101vh;
+	background-color: #fff;
+}
+
+.app {
+	text-align: center;
+	user-select: none; /* no text select */
+	height: 100vh;
+
+	background-repeat: repeat;
+	background-size: 52px 100px;
+	background-position: center;
+	background-color: rgb(193, 210, 214);
+}
+
+@keyframes form-animation {
+	from {
+		opacity: 0;
+		transform: translateY(50%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+form {
+	animation-name: form-animation;
+	animation-duration: 200ms;
+	padding: 20px;
+	background-color: rgba(163, 180, 187, 0.774);
+	color: #333;
+	font-weight: bold;
+}
+
+form label {
+	/* text-align: left; */
+	display: block;
+}
+
+form div {
+	margin: 0px 0px 20px 0px;
+}
+
+
+button {
+	padding: 10px;
+}
