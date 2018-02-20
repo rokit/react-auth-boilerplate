@@ -5,6 +5,8 @@ const passport = require('passport');
 const requireAuth = passport.authenticate('jwt', {session: false});
 const requireSignin = passport.authenticate('local', {session: false});
 
+var env = process.env.NODE_ENV || 'dev'
+
 module.exports = function (app) {
 	app.get('/secret', function (req, res) {
 		console.log('ello')
@@ -12,7 +14,9 @@ module.exports = function (app) {
 	app.get('/get-user', Authentication.getUser);
   app.get('/', function (req, res) {
 		console.log('res data', res)
-    res.send({message: 'S3CR3T M3SS4G3'});
+		if (env !== 'dev') {
+			res.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+		}
   });
   app.post('/signup', Authentication.signup);
   app.post('/signin', requireSignin, Authentication.signin);
