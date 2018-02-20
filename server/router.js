@@ -1,8 +1,9 @@
 const Authentication = require('./controllers/authentication');
 const passportService = require('./services/passport');
 const passport = require('passport');
+const path = require('path');
 
-const requireAuth = passport.authenticate('jwt', {session: false});
+// const requireAuth = passport.authenticate('jwt', {session: false});
 const requireSignin = passport.authenticate('local', {session: false});
 
 var env = process.env.NODE_ENV || 'dev'
