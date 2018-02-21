@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mars/heroku-cra-node.git"
+    "url": "https://github.com/rokit/react-auth-boilerplate.git"
   },
   "keywords": [
     "node",
