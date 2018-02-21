@@ -1,4 +1,4 @@
-# create-react-app with a Node server on Heroku with Passport Authentication
+# create-react-app with a Node server on Heroku with Passport authentication
 
 MongoDB, React, React-Router, Redux, Immutable
 
