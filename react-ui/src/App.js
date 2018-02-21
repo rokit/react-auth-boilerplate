@@ -33,9 +33,11 @@ class App extends Component {
 	}
 
 	handleSignupSubmit = (email, username, password) => {
-		this.props.attemptSignup(email, username, password)
+		this.props.attemptSignup(email, username, password).then(this.goToProtected)
 	}
-
+	goToProtected = () => {
+		this.props.history.push('/protected')
+	}
   render() {
 		let backgroundStyle = {
 			backgroundImage: `url(${diamondPattern})`
